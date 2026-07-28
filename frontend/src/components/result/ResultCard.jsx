@@ -11,7 +11,11 @@ function ResultCard({ result }) {
     description: "No description available.",
   };
   return (
-    <div className="mx-auto mt-10 max-w-xl rounded-3xl bg-white p-8 shadow-2xl border border-green-100">
+    <motion.div
+  initial={{ opacity: 0, scale: 0.9 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.4 }}
+  className="mx-auto mt-10 max-w-xl rounded-3xl bg-white p-8 shadow-2xl border border-green-100">
 
       <h2 className="text-4xl font-bold text-green-700">
         ♻ {result.prediction}
@@ -51,7 +55,7 @@ function ResultCard({ result }) {
 
       </div>
 
-    </div>
+    </motion.div>
   );
 }
 

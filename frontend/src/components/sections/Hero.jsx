@@ -1,9 +1,14 @@
 import { motion } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
 
+
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-green-50 via-white to-white">
+   <motion.section
+  initial={{ opacity: 0, y: -40 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.7 }}
+   className="relative overflow-hidden bg-gradient-to-b from-green-50 via-white to-white">
       {/* Background Blur */}
       <div className="absolute -top-20 -left-20 h-72 w-72 rounded-full bg-green-200 blur-3xl opacity-30"></div>
 
@@ -50,7 +55,7 @@ function Hero() {
         </motion.div>
 
       </div>
-    </section>
+    </motion.section>
   );
 }
 

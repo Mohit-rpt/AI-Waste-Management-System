@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { FaCloudUploadAlt, FaTrash } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 function UploadCard({
     selectedImage,
@@ -49,7 +50,13 @@ const handleDrop = (e) => {
 };
 
   return (
-    <section className="bg-white py-20">
+   <motion.section
+  className="bg-white py-20"
+  initial={{ opacity: 0, y: 60 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6 }}
+   >
 
     <input
       type="file"
@@ -135,7 +142,7 @@ const handleDrop = (e) => {
         </div>
 
       </div>
-    </section>
+    </motion.section>
   );
 }
 

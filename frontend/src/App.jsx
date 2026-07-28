@@ -61,6 +61,7 @@ function App() {
             history={history}
             clearHistory={clearHistory}
           />
+          
       <Dashboard history={history} />
     </div>
   );

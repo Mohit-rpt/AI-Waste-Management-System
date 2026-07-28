@@ -1,4 +1,6 @@
 import StatCard from "./StatCard";
+import { motion } from "framer-motion";
+
 
 function Dashboard({ history }) {
   if (history.length === 0) return null;
@@ -32,7 +34,20 @@ function Dashboard({ history }) {
         AI Statistics
       </h2>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+     <motion.div
+  className="grid gap-6 md:grid-cols-2 lg:grid-cols-4"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  variants={{
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  }}
+  >
 
         <StatCard
           title="Total Scans"
@@ -58,7 +73,7 @@ function Dashboard({ history }) {
           icon="🌱"
         />
 
-      </div>
+      </motion.div>
 
     </section>
   );
