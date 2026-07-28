@@ -6,6 +6,7 @@ import { predictWaste } from "./services/wasteServices";
 import ResultCard from "./components/result/ResultCard";
 import History from "./components/history/History";
 import usePredictionHistory from "./hooks/usePredictionHistory";
+import Dashboard from "./components/dashboard/DashBoard";
 
 function App() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -60,6 +61,7 @@ function App() {
             history={history}
             clearHistory={clearHistory}
           />
+      <Dashboard history={history} />
     </div>
   );
 }
