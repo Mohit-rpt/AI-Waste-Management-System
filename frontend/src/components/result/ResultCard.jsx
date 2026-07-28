@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { wasteInfo } from "../../utils/wasteInfo";
 import ConfidenceBar from "./ConfidenceBar";
 

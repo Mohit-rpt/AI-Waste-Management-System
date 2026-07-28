@@ -2,15 +2,18 @@ import { motion } from "framer-motion";
 
 function StatCard({ title, value, icon }) {
   return (
-    <motion.div
-      variants={{
-        hidden: { opacity: 0, y: 40 },
-        visible: { opacity: 1, y: 0 },
-      }}
-      className="rounded-2xl bg-white p-6 shadow-lg"
-    >
-      ...
-    </motion.div>
+    <div className="rounded-2xl bg-white p-6 shadow-lg">
+      <div className="text-4xl">{icon}</div>
+
+      <h3 className="mt-4 text-gray-500">
+        {title}
+      </h3>
+
+      <p className="mt-2 text-3xl font-bold text-green-600">
+        {value}
+      </p>
+    </div>
   );
 }
+
 export default StatCard;
