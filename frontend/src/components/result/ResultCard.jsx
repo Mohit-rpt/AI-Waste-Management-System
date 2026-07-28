@@ -1,21 +1,23 @@
 import { wasteInfo } from "../../utils/wasteInfo";
+import ConfidenceBar from "./ConfidenceBar";
 
 function ResultCard({ result }) {
-  const info = wasteInfo[result.prediction.toLowerCase()];
-
+ const info =
+  wasteInfo[result.prediction.toLowerCase()] || {
+    bin: "Unknown",
+    recyclable: false,
+    decomposition: "Unknown",
+    ecoTip: "No information available.",
+    description: "No description available.",
+  };
   return (
-    <div className="mx-auto mt-10 max-w-xl rounded-3xl bg-white p-8 shadow-xl">
+    <div className="mx-auto mt-10 max-w-xl rounded-3xl bg-white p-8 shadow-2xl border border-green-100">
 
       <h2 className="text-4xl font-bold text-green-700">
         ♻ {result.prediction}
       </h2>
 
-      <p className="mt-4 text-lg">
-        Confidence:
-        <span className="font-bold text-green-600">
-          {" "} {result.confidence}%
-        </span>
-      </p>
+     <ConfidenceBar confidence={result.confidence} />
 
       <div className="mt-6 space-y-3">
 
@@ -23,11 +25,15 @@ function ResultCard({ result }) {
           🗑 <strong>Bin:</strong> {info.bin}
         </p>
 
-        <p>
-          ♻ <strong>Recyclable:</strong>{" "}
-          {info.recyclable ? "Yes" : "No"}
-        </p>
-
+       <span
+        className={`rounded-full px-3 py-1 text-sm font-semibold ${
+            info.recyclable
+            ? "bg-green-100 text-green-700"
+            : "bg-red-100 text-red-700"
+        }`}
+        >
+        {info.recyclable ? "♻ Recyclable" : "🗑 Non-Recyclable"}
+        </span>
         <p>
           ⏳ <strong>Decomposition:</strong>{" "}
           {info.decomposition}

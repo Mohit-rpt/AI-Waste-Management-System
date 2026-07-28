@@ -4,13 +4,21 @@ import Hero from "./components/sections/Hero";
 import UploadCard from "./components/upload/UploadCard";
 import { predictWaste } from "./services/wasteServices";
 import ResultCard from "./components/result/ResultCard";
+import History from "./components/history/History";
+import usePredictionHistory from "./hooks/usePredictionHistory";
 
 function App() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  
 
+  const {
+            history,
+            addPrediction,
+            clearHistory,
+                             } = usePredictionHistory();
   const handlePrediction = async () => {
     if (!selectedImage) return;
 
@@ -22,6 +30,7 @@ function App() {
       const data = await predictWaste(selectedImage);
 
       setResult(data);
+     addPrediction(data);
 
     } catch (err) {
       console.error(err);
@@ -47,6 +56,10 @@ function App() {
       />
       {result && <ResultCard result={result} />}
 
+      <History
+            history={history}
+            clearHistory={clearHistory}
+          />
     </div>
   );
 }

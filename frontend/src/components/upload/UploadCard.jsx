@@ -20,10 +20,13 @@ function UploadCard({
     setSelectedImage(file);
   };
 
-  const removeImage = () => {
-    setSelectedImage(null);
+ const removeImage = () => {
+  setSelectedImage(null);
+
+  if (fileInputRef.current) {
     fileInputRef.current.value = "";
-  };
+  }
+};
   const handleDragOver = (e) => {
   e.preventDefault();
   setDragActive(true);
@@ -47,6 +50,14 @@ const handleDrop = (e) => {
 
   return (
     <section className="bg-white py-20">
+
+    <input
+      type="file"
+      accept="image/*"
+      ref={fileInputRef}
+      onChange={handleImageChange}
+      className="hidden"
+    />
       <div className="mx-auto max-w-4xl px-6">
 
        <div
@@ -83,13 +94,7 @@ const handleDrop = (e) => {
                 Browse Image
               </button>
 
-              <input
-                type="file"
-                accept="image/*"
-                ref={fileInputRef}
-                onChange={handleImageChange}
-                className="hidden"
-              />
+            
 
             </div>
           ) : (
