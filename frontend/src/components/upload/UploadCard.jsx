@@ -1,8 +1,13 @@
 import { useRef, useState } from "react";
 import { FaCloudUploadAlt, FaTrash } from "react-icons/fa";
 
-function UploadCard() {
-  const [selectedImage, setSelectedImage] = useState(null);
+function UploadCard({
+    selectedImage,
+    setSelectedImage,
+    handlePrediction,
+    loading
+})  {
+
   const [dragActive, setDragActive] = useState(false);
 
   const fileInputRef = useRef(null);
@@ -103,9 +108,11 @@ const handleDrop = (e) => {
               <div className="mt-8 flex gap-4">
 
                 <button
-                  className="rounded-xl bg-green-600 px-6 py-3 font-semibold text-white hover:bg-green-700"
+                    onClick={handlePrediction}
+                    disabled={loading}
+                    className="rounded-xl bg-green-600 px-6 py-3 font-semibold text-white hover:bg-green-700 disabled:bg-gray-400"
                 >
-                  Analyse Image
+                    {loading ? "Analysing..." : "Analyse Image"}
                 </button>
 
                 <button

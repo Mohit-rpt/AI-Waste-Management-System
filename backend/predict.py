@@ -15,6 +15,8 @@ CLASS_NAMES = [
 ]
 
 
+from waste_info import WASTE_INFO
+
 def predict_image(image_file):
     image = Image.open(image_file).convert("RGB")
     image = image.resize((224, 224))
@@ -27,8 +29,11 @@ def predict_image(image_file):
     probabilities = tf.nn.softmax(predictions[0]).numpy()
 
     predicted_index = np.argmax(probabilities)
+    category = CLASS_NAMES[predicted_index]
+    info = WASTE_INFO.get(category, {})
 
     return {
-        "prediction": CLASS_NAMES[predicted_index],
-        "confidence": round(float(probabilities[predicted_index]) * 100, 2)
-    }
+        "prediction": category,
+        "confidence": round(float(probabilities[predicted_index]) * 100, 2),
+        "details": info
+    }
