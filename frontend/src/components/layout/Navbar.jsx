@@ -1,8 +1,11 @@
 import { FaGithub } from "react-icons/fa";
 import { IoLeaf } from "react-icons/io5";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
+import { FaMoon, FaSun } from "react-icons/fa";
+import useTheme from "../../hooks/useTheme";
 
 function Navbar() {
+  const { darkMode, setDarkMode } = useTheme();
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur-lg">
       <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
@@ -40,6 +43,12 @@ function Navbar() {
         </ul>
 
         {/* Right Side */}
+        <button
+        onClick={() => setDarkMode(!darkMode)}
+        className="rounded-full bg-green-600 p-3 text-white transition hover:bg-green-700"
+      >
+        {darkMode ? <FaSun /> : <FaMoon />}
+      </button>
         <div className="flex items-center gap-3">
 
           <a

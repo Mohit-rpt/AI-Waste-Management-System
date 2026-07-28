@@ -51,7 +51,7 @@ const handleDrop = (e) => {
 
   return (
    <motion.section
-  className="bg-white py-20"
+  className="bg-white dark:bg-slate-900 transition-colors duration-500 py-20"
   initial={{ opacity: 0, y: 60 }}
   whileInView={{ opacity: 1, y: 0 }}
   viewport={{ once: true }}
@@ -72,9 +72,9 @@ const handleDrop = (e) => {
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
             className={`rounded-3xl border-2 border-dashed p-10 shadow-lg transition-all duration-300 ${
-                dragActive
-                ? "border-green-600 bg-green-100 scale-[1.02]"
-                : "border-green-300 bg-green-50"
+               dragActive
+? "border-green-600 bg-green-100 dark:bg-slate-700 scale-[1.02]"
+: "border-green-300 bg-green-50 dark:border-slate-700 dark:bg-slate-800"
             }`}
             >
 
@@ -86,11 +86,11 @@ const handleDrop = (e) => {
                 className="mb-6 text-green-600"
               />
 
-              <h2 className="text-3xl font-bold">
+              <h2 className="text-3xl font-bold text-slate-900 dark:text-white">
                 Upload Waste Image
               </h2>
 
-              <p className="mt-3 text-gray-600">
+              <p className="mt-3 text-gray-600 dark:text-slate-300">
                 JPG, JPEG or PNG
               </p>
 
@@ -113,7 +113,7 @@ const handleDrop = (e) => {
                 className="h-72 rounded-2xl object-cover shadow-md"
               />
 
-              <p className="mt-6 font-medium">
+              <p className="mt-6 font-medium text-slate-900 dark:text-white">
                 {selectedImage.name}
               </p>
 

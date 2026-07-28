@@ -32,8 +32,8 @@ function WasteChart({ history }) {
   }));
 
   return (
-    <section className="mx-auto mt-12 max-w-5xl rounded-3xl bg-white p-6 shadow-xl">
-      <h2 className="mb-6 text-center text-3xl font-bold">
+    <section className="mx-auto mt-12 max-w-5xl rounded-3xl bg-white dark:bg-slate-800 p-6 shadow-xl transition-colors duration-500">
+      <h2 className="mb-6 text-center text-3xl font-bold text-slate-900 dark:text-white">
         Waste Distribution
       </h2>
 

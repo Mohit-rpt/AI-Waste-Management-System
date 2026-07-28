@@ -5,11 +5,11 @@ function History({ history, clearHistory }) {
 
   return (
     <section className="mx-auto mt-10 max-w-xl">
-      <div className="rounded-3xl bg-white p-6 shadow-xl">
+      <div className="rounded-3xl bg-white dark:bg-slate-800 p-6 shadow-xl transition-colors duration-500">
 
-       <div className="mb-3 flex items-center justify-between rounded-xl bg-slate-100 p-3"
+       <div className="mb-3 flex items-center justify-between rounded-xl bg-slate-100 dark:bg-slate-700 p-3"
             >
-          <h2 className="text-2xl font-bold">
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
             Recent Predictions
           </h2>
 
@@ -27,7 +27,7 @@ function History({ history, clearHistory }) {
                     initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="mb-3 flex items-center justify-between rounded-xl bg-slate-100 p-3"
+                   className="mb-3 flex items-center justify-between rounded-xl bg-slate-100 dark:bg-slate-700 p-3"
                 >
             <span>♻ {item.prediction}</span>
 

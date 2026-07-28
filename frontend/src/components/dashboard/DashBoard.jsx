@@ -28,9 +28,9 @@ function Dashboard({ history }) {
   );
 
   return (
-    <section className="mx-auto mt-12 max-w-6xl px-6">
+    <section className="mx-auto mt-12 max-w-6xl px-6 transition-colors duration-500">
 
-      <h2 className="mb-8 text-center text-4xl font-bold">
+      <h2 className="mb-8 text-center text-4xl font-bold text-slate-900 dark:text-white">
         AI Statistics
       </h2>
 
