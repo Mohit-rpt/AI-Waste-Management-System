@@ -12,6 +12,7 @@ import ChatBot from "./components/ui/ChatBot";
 import ReportButton from "./components/report/ReportButton";
 import Features from "./components/sections/Features";
 import HowItWorks from "./components/sections/HowItWorks";
+import Footer from "./components/layout/Footer";
 
 function App() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -84,6 +85,7 @@ function App() {
             clearHistory={clearHistory}
           />
       <ChatBot />
+      <Footer />
     </div>
   );
 }
