@@ -5,6 +5,7 @@ import { FaArrowRight } from "react-icons/fa";
 function Hero() {
   return (
    <motion.section
+   id="home"
   initial={{ opacity: 0, y: -40 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.7 }}

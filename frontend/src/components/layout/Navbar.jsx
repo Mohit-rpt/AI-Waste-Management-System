@@ -30,15 +30,15 @@ function Navbar() {
         {/* Desktop Menu */}
         <ul className="hidden items-center gap-8 text-gray-700 font-medium md:flex">
           <li className="cursor-pointer transition hover:text-green-600">
-            Home
+           <a href="#home">Home</a>
           </li>
 
           <li className="cursor-pointer transition hover:text-green-600">
-            Features
+           <a href="#features">Features</a>
           </li>
 
           <li className="cursor-pointer transition hover:text-green-600">
-            How It Works
+            <a href="#how-it-works">How It Works</a>
           </li>
         </ul>
 

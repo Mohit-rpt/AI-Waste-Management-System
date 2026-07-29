@@ -9,7 +9,9 @@ import usePredictionHistory from "./hooks/usePredictionHistory";
 import Dashboard from "./components/dashboard/DashBoard";
 import WasteChart from "./components/charts/WasteChart";
 import ChatBot from "./components/ui/ChatBot";
-
+import ReportButton from "./components/report/ReportButton";
+import Features from "./components/sections/Features";
+import HowItWorks from "./components/sections/HowItWorks";
 
 function App() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -52,13 +54,24 @@ function App() {
 
       <Hero />
 
+      <Features />
+
+      <HowItWorks />
+
       <UploadCard
         selectedImage={selectedImage}
         setSelectedImage={setSelectedImage}
         handlePrediction={handlePrediction}
         loading={loading}
       />
-      {result && <ResultCard result={result} />}
+     {result && (
+  <>
+    <ResultCard result={result} />
+    <div className="flex justify-center">
+      <ReportButton result={result} />
+    </div>
+  </>
+)}
 
      
           
