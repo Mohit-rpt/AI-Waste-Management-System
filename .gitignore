@@ -16,3 +16,9 @@ node_modules/
 # OS
 .DS_Store
 Thumbs.db
+
+.env
+.venv
+venv
+__pycache__/
+uploads/

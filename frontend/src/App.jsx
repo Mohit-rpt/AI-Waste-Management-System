@@ -8,6 +8,7 @@ import History from "./components/history/History";
 import usePredictionHistory from "./hooks/usePredictionHistory";
 import Dashboard from "./components/dashboard/DashBoard";
 import WasteChart from "./components/charts/WasteChart";
+import ChatBot from "./components/ui/ChatBot";
 
 
 function App() {
@@ -69,6 +70,7 @@ function App() {
             history={history}
             clearHistory={clearHistory}
           />
+      <ChatBot />
     </div>
   );
 }
