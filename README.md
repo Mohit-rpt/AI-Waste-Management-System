@@ -165,21 +165,17 @@ Ask waste-related questions.
 
 Frontend:
 ```
-Your Vercel URL
+https://ai-waste-management-system-three.vercel.app
 ```
 
 Backend:
 ```
-Your Render URL
+https://ai-waste-management-system-zqps.onrender.com
 ```
 
 ---
 
-## 📸 Screenshots
 
-(Add project screenshots here)
-
----
 
 ## 🔮 Future Improvements
 
