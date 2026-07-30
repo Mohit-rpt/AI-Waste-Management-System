@@ -5,7 +5,6 @@ const api = axios.create({
     headers: {
         "Content-Type": "multipart/form-data",
     },
-    console.log("API URL:", import.meta.env.VITE_API_URL);
 });
 
 export default api;
