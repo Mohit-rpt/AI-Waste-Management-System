@@ -45,14 +45,27 @@ function Hero() {
           transition={{ delay: 0.5 }}
           className="mt-10 flex flex-col gap-4 sm:flex-row"
         >
-          <button className="rounded-xl bg-green-600 px-8 py-4 font-semibold text-white transition hover:bg-green-700">
-            Upload Image
-          </button>
+          <button  className="rounded-xl bg-green-600 px-8 py-4 font-semibold text-white transition hover:bg-green-700"
+              onClick={() =>
+                document
+                  .getElementById("upload")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+             
+            >
+              Upload Image
+            </button>
 
-          <button className="flex items-center justify-center gap-2 rounded-xl border border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-700 dark:text-white px-8 py-4 font-semibold transition hover:border-green-600 hover:text-green-600">
-            Learn More
-            <FaArrowRight />
-          </button>
+            <button className="flex items-center justify-center gap-2 rounded-xl border border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-700 dark:text-white px-8 py-4 font-semibold transition hover:border-green-600 hover:text-green-600"
+                  onClick={() =>
+                    document
+                      .getElementById("features")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
+                >
+                  Learn More 
+                  <FaArrowRight />
+                  </button>
         </motion.div>
 
       </div>

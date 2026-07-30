@@ -59,12 +59,15 @@ function App() {
 
       <HowItWorks />
 
+      <section id="upload">
       <UploadCard
         selectedImage={selectedImage}
         setSelectedImage={setSelectedImage}
         handlePrediction={handlePrediction}
         loading={loading}
       />
+      </section>
+      
      {result && (
   <>
     <ResultCard result={result} />

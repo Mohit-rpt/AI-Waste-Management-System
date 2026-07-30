@@ -6,7 +6,7 @@ function Footer() {
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 px-6 text-center">
 
         <h2 className="text-2xl font-bold text-green-600">
-          EcoVision AI 🌱
+          WasteWise AI 🌱
         </h2>
 
         <p className="text-slate-600 dark:text-slate-300">
@@ -34,7 +34,7 @@ function Footer() {
         </p>
 
         <p className="text-xs text-slate-400">
-          © {new Date().getFullYear()} EcoVision AI. All Rights Reserved.
+          © {new Date().getFullYear()} WasteWise AI. All Rights Reserved.
         </p>
       </div>
     </footer>
