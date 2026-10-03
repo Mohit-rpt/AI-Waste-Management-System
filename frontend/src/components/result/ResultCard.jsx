@@ -1,8 +1,8 @@
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import impactData from "../../data/impactData";
 import ConfidenceBar from "./ConfidenceBar";
-import { generatePDF } from "../../utils/pdfGenerator";
-import { useRef } from "react";
+
 
 function ResultCard({ result }) {
  const info =

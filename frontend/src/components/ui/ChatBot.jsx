@@ -3,14 +3,24 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, X, Send, Sparkles, Trash2, Leaf } from "lucide-react";
 import { sendChatMessage } from "../../services/aiServices";
 
+let messageCounter = 0;
+const createMessageId = () => {
+  messageCounter += 1;
+  return `${Date.now()}-${messageCounter}`;
+};
+
+const formatCurrentTime = () => {
+  return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+};
+
 function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
-      id: 1,
+      id: "initial-1",
       sender: "bot",
       text: "Hello! 🌿 I am your **WasteWise AI Assistant**. Ask me anything about waste management, recycling, composting, or how to dispose of specific items!",
-      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      time: formatCurrentTime()
     }
   ]);
   const [input, setInput] = useState("");
@@ -36,18 +46,19 @@ function ChatBot() {
   }, [messages, isLoading, isOpen]);
 
   const handleSend = async (textToSend) => {
-    const text = typeof textToSend === "string" ? textToSend : input;
-    if (!text.trim() || isLoading) return;
+    const rawText = typeof textToSend === "string" ? textToSend : input;
+    const text = rawText ? rawText.trim() : "";
+    if (!text || isLoading) return;
 
     if (typeof textToSend !== "string") {
       setInput("");
     }
 
     const userMessage = {
-      id: Date.now(),
+      id: createMessageId(),
       sender: "user",
       text: text,
-      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      time: formatCurrentTime()
     };
 
     setMessages((prev) => [...prev, userMessage]);
@@ -55,20 +66,25 @@ function ChatBot() {
 
     try {
       const response = await sendChatMessage(text);
+      const replyText = response && typeof response.reply === "string"
+        ? response.reply
+        : "I received an empty response. Please ask again.";
+
       const botMessage = {
-        id: Date.now() + 1,
+        id: createMessageId(),
         sender: "bot",
-        text: response.reply,
-        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        text: replyText,
+        time: formatCurrentTime()
       };
       setMessages((prev) => [...prev, botMessage]);
     } catch (error) {
-      console.error(error);
+      console.error("ChatBot error:", error);
+      const errorText = error?.message || "Sorry, I'm having trouble connecting right now. Please try again later.";
       const errorMessage = {
-        id: Date.now() + 1,
+        id: createMessageId(),
         sender: "bot",
-        text: "Sorry, I'm having trouble connecting right now. Please try again later.",
-        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        text: `⚠️ **Unable to complete request**\n\n${errorText}`,
+        time: formatCurrentTime()
       };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
@@ -79,16 +95,17 @@ function ChatBot() {
   const clearChat = () => {
     setMessages([
       {
-        id: Date.now(),
+        id: createMessageId(),
         sender: "bot",
         text: "Chat cleared! 🌿 How can I help you manage your waste today?",
-        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        time: formatCurrentTime()
       }
     ]);
   };
 
   const renderMessageText = (text) => {
-    return text.split("\n").map((line, idx) => {
+    if (!text) return null;
+    return String(text).split("\n").map((line, idx) => {
       let processed = line;
       // Simple regex for bold **text**
       const boldRegex = /\*\*(.*?)\*\*/g;
@@ -113,6 +130,7 @@ function ChatBot() {
       );
     });
   };
+
 
   return (
     <>
@@ -225,7 +243,8 @@ function ChatBot() {
                     <button
                       key={index}
                       onClick={() => handleSend(prompt)}
-                      className="cursor-pointer rounded-full border border-green-200 bg-green-50/50 px-3 py-1 text-xs text-green-700 hover:bg-green-100 hover:text-green-800 transition dark:border-green-900/50 dark:bg-green-950/20 dark:text-green-400 dark:hover:bg-green-900/30"
+                      disabled={isLoading}
+                      className="cursor-pointer rounded-full border border-green-200 bg-green-50/50 px-3 py-1 text-xs text-green-700 hover:bg-green-100 hover:text-green-800 transition disabled:opacity-40 disabled:cursor-not-allowed dark:border-green-900/50 dark:bg-green-950/20 dark:text-green-400 dark:hover:bg-green-900/30"
                     >
                       {prompt}
                     </button>

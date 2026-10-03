@@ -66,6 +66,13 @@ function App() {
         handlePrediction={handlePrediction}
         loading={loading}
       />
+      {error && (
+        <div className="mx-auto max-w-4xl px-6 mt-4">
+          <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-center text-sm font-medium text-red-600 dark:border-red-900/50 dark:bg-red-950/30 dark:text-red-400">
+            {error}
+          </div>
+        </div>
+      )}
       </section>
       
      {result && (

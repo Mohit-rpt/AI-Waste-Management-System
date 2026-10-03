@@ -1,9 +1,15 @@
+import os
+from pathlib import Path
 import numpy as np
 import tensorflow as tf
 from PIL import Image
 
-# Load model once when the server starts
-model = tf.keras.models.load_model("model/waste_classifier.keras")
+# Load model once when the server starts with resilient path resolution
+_model_path = Path(__file__).resolve().parent / "model" / "waste_classifier.keras"
+if not _model_path.exists():
+    _model_path = Path("model") / "waste_classifier.keras"
+
+model = tf.keras.models.load_model(str(_model_path))
 
 CLASS_NAMES = [
     "cardboard",

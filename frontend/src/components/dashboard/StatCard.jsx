@@ -2,7 +2,11 @@ import { motion } from "framer-motion";
 
 function StatCard({ title, value, icon }) {
   return (
-    <div className="rounded-2xl bg-white p-6 shadow-lg">
+    <motion.div
+      whileHover={{ y: -4 }}
+      transition={{ duration: 0.2 }}
+      className="rounded-2xl bg-white p-6 shadow-lg"
+    >
       <div className="text-4xl">{icon}</div>
 
       <h3 className="mt-4 text-gray-500">
@@ -12,7 +16,7 @@ function StatCard({ title, value, icon }) {
       <p className="mt-2 text-3xl font-bold text-green-600">
         {value}
       </p>
-    </div>
+    </motion.div>
   );
 }
 
